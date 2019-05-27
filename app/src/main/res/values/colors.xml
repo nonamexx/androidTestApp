@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#5b463a</color>-->
+    <!--<color name="colorPrimaryDark">#311f14</color>-->
+    <!--<color name="colorPrimaryLight">#897164</color>-->
+    <!--<color name="colorAccent">#7cb342</color>-->
+    <!--<color name="colorAccentLight">#A1BB89</color>-->
+
+    <color name="colorPrimary">@color/mountainBlue</color>
+    <color name="colorPrimaryDark">#2F5C64</color>
+    <color name="colorPrimaryLight">#76A9B3</color>
+    <color name="colorAccent">@color/sunnyPink</color>
+    <color name="colorAccentLight">@color/pinkSky</color>
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhite_transparent">#F0FFFFFF</color>
+    <color name="colorGray">#666666</color>
+
+    <color name="dusty">#ece9e4</color>
+    <color name="softWood">#e3d5c6</color>
+    <color name="teenWood">#d9a881</color>
+    <color name="logy">#573718</color>
+    <color name="blackBrown">#1f0f08</color>
+
+    <color name="oldLeaf">#3f524c</color>
+    <color name="freshTree">#5a7b5e</color>
+    <color name="grass">#96ac87</color>
+    <color name="sore">#cfc59f</color>
+    <color name="milk">#fdedd8</color>
+    
+    <!--Theme 1-->
+    <color name="indianRed">#CD5C5C</color>
+    <color name="rightCoral">#CD5C5C</color>
+    <color name="salmon">#FA8072</color>
+    <color name="darkSalmon">#FA8072</color>
+    <color name="lightSalmon">#FFA07A</color>
+
+    <color name="sunnyPink">#ce6a6b</color>
+    <color name="pinkSky">#ebaca2</color>
+    <color name="grayGreen">#bed3c3</color>
+    <color name="mountainBlue">#4a919e</color>
+    <color name="forestNight">#212e53</color>
+    
+    <color name="grayBox">#59585e</color>
+    <color name="blueCream">#b7caca</color>
+    <color name="vanilla">#f5d8ad</color>
+    <color name="cookie">#be865c</color>
+    <color name="matcha">#b1a671</color>
+    
+</resources>
