@@ -19,4 +19,9 @@ class ExampleUnitTest {
     fun addition_isWrong() {
         assertNotEquals(4, 2 + 3)
     }
+
+    @Test
+    fun jenkins_status_test() {
+        assertEquals(5, 2 + 3)
+    }
 }
