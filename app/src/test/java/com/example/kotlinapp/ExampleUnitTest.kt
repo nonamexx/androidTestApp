@@ -24,4 +24,9 @@ class ExampleUnitTest {
     fun jenkins_status_test() {
         assertEquals(5, 2 + 3)
     }
+
+    @Test
+    fun jenkins_status_failed() {
+        assertEquals(4, 2 + 3)
+    }
 }
