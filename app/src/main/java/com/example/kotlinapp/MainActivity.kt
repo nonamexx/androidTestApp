@@ -98,6 +98,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupBottomNavMenu(navController: NavController) {
         navigation.setupWithNavController(navController)
+        if (intent.action == "open_notification") {
+            navController.navigate(R.id.navigation_notifications)
+        }
     }
 
     private fun setupDrawerMenu(navController: NavController) {
@@ -155,6 +158,7 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
     private fun createNotification() {
         // if you wanna create channel group, you have to create channel group first then create channel
+        // should create group when you have more than 10 channels
         val importance = NotificationManager.IMPORTANCE_DEFAULT
         val channelId = "test_notification"
         val channelName = "Noti"

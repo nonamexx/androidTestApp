@@ -35,9 +35,10 @@ class ProfileFragment: Fragment() {
     }
 
     private fun callNotification() {
-        // nah nah nah
-        val intent = Intent(context, NotificationFragment::class.java).apply {
+        // only activity
+        val intent = Intent(context, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            action = "open_notification"
         }
         val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
 
