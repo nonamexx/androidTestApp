@@ -26,5 +26,5 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_profile">ProfileActivity</string>
-
+    <string name="notification_description">If you click this button, I will send you a notification sample.\nTry me!</string>
 </resources>

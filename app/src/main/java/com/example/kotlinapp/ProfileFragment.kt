@@ -30,28 +30,8 @@ class ProfileFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.profileEditButton.setOnClickListener {
-            callNotification()
+
         }
     }
 
-    private fun callNotification() {
-        // only activity
-        val intent = Intent(context, MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            action = "open_notification"
-        }
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
-
-        val notificationId = 0
-        val manager = context!!.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        val notification = NotificationCompat.Builder(context!!, "test_notification")
-            .setSmallIcon(R.drawable.ic_menu_share)
-            .setContentTitle("Notification!")
-            .setContentText("Do you see me?")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setContentIntent(pendingIntent) // nah
-            .setAutoCancel(true)
-            .build()
-        manager.notify(notificationId, notification)
-    }
 }
