@@ -1,5 +1,8 @@
 package com.example.kotlinapp
 
+import android.annotation.TargetApi
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -121,6 +124,9 @@ class MainActivity : AppCompatActivity() {
         )
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            createNotification()
+        }
 
 //        nav_view.setNavigationItemSelectedListener(onNavigationView)
 
@@ -144,6 +150,18 @@ class MainActivity : AppCompatActivity() {
         } else {
             super.onBackPressed()
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun createNotification() {
+        // if you wanna create channel group, you have to create channel group first then create channel
+        val importance = NotificationManager.IMPORTANCE_DEFAULT
+        val channelId = "test_notification"
+        val channelName = "Noti"
+
+        val channel = NotificationChannel(channelId, channelName, importance)
+        val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        manager.createNotificationChannel(channel)
     }
 
     private fun openFragment(fragment: Fragment){
