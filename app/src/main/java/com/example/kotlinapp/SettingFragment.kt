@@ -15,6 +15,7 @@ class SettingFragment: Fragment() {
     private lateinit var binding: FragmentSettingBinding
 
     companion object {
+        // test
         fun newInstance(): SettingFragment = SettingFragment()
     }
 
