@@ -14,6 +14,14 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+//    signingConfigs {
+//        release {
+//            storeFile file("what.keystore")
+//            storePassword 'whatPassword'
+//            keyAlias 'What'
+//            keyPassword 'password'
+//        }
+//    }
     buildTypes {
         release {
             minifyEnabled false
@@ -71,4 +79,22 @@ dependencies {
     //Navigation
 //    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
 //    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+}
+
+afterEvaluate {
+//    assembleAndroidTest
+//    compileDebugUnitTestSources
+//    testDebugUnitTest // run Unit tests
+//    testReleaseUnitTest
+    assembleDebug.dependsOn{
+        test
+    }
+    println('This is a test result ---->  file:///C:/Users/User/AndroidStudioProjects/KotlinApp/app/build/reports/tests/testDebugUnitTest/index.html')
+
+}
+
+task printMe {
+    doLast {
+        println('hahahaha')
+    }
 }
