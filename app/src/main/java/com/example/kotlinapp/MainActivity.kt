@@ -28,9 +28,11 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.navigation.ui.setupWithNavController
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : DaggerAppCompatActivity() {
 
 //    private val onNavigationView = NavigationView.OnNavigationItemSelectedListener { item ->
 //        when (item.itemId) {
@@ -164,8 +166,12 @@ class MainActivity : AppCompatActivity() {
         val channelName = "Noti"
 
         val channel = NotificationChannel(channelId, channelName, importance)
-        val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        manager.createNotificationChannel(channel)
+        val manager = getSystemService(Context.NOTIFICATION_SERVICE)
+        // or val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        // if use above statement, no need to check if-is
+        if (manager is NotificationManager) {
+            manager.createNotificationChannel(channel)
+        }
     }
 
     private fun openFragment(fragment: Fragment){

@@ -9,8 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import com.example.kotlinapp.databinding.FragmentHomeBinding
+import dagger.android.support.DaggerFragment
 
-class HomeFragment : Fragment(){
+class HomeFragment : DaggerFragment(){
     private lateinit var binding: FragmentHomeBinding
 
     companion object {

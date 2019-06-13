@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -79,6 +81,20 @@ dependencies {
     //Navigation
 //    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
 //    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+    // dagger
+    kapt 'com.google.dagger:dagger-compiler:2.22.1'
+    implementation 'com.google.dagger:dagger:2.22.1'
+    implementation('com.google.dagger:dagger-android:2.22.1') {
+        exclude group: "com.android.support"
+    }
+    kapt('com.google.dagger:dagger-android-processor:2.22.1'){
+        exclude group: "com.android.support"
+    }
+    implementation('com.google.dagger:dagger-android-support:2.22.1') {
+        exclude group: "com.android.support"
+    }
+    compileOnly 'javax.annotation:jsr250-api:1.0'
 }
 
 afterEvaluate {
@@ -89,7 +105,7 @@ afterEvaluate {
     assembleDebug.dependsOn{
         test
     }
-    println('This is a test result ---->  file:///C:/Users/User/AndroidStudioProjects/KotlinApp/app/build/reports/tests/testDebugUnitTest/index.html')
+    println("This is a test result ----> ${getTestReportDir().path}")
 
 }
 

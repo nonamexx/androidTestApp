@@ -12,11 +12,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.app.NotificationCompat
 import com.example.kotlinapp.databinding.FragmentProfileBinding
+import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
 /**
  * Created by Pear on 4/4/2019.
  */
-class ProfileFragment: Fragment() {
+class ProfileFragment: DaggerFragment() {
+    @Inject
+    lateinit var someData: SomeData
+
     private lateinit var binding: FragmentProfileBinding
 
     companion object {
@@ -29,6 +34,8 @@ class ProfileFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.profileUserName.text = someData.name
+        binding.textTitle.text = "Favourite : ${someData.favourite}"
         binding.profileEditButton.setOnClickListener {
 
         }
