@@ -1,11 +1,13 @@
 package com.example.kotlinapp
 
+import android.content.Context
 import androidx.databinding.DataBindingUtil
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -32,7 +34,8 @@ class OtherFragment: Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_other, container, false)
-        viewModel.searchUserInGithub("no")
+//        viewModel.searchUserInGithub("no")
+        submitSearch()
         binding.githubUserRecycler.layoutManager = LinearLayoutManager(context)
 //        binding.githubUserRecycler.adapter = GithubUserAdapter()
         return binding.root
@@ -42,12 +45,35 @@ class OtherFragment: Fragment() {
         viewModel.userDataLiveData.observe(this, Observer {
             Toast.makeText(context, "Complete", Toast.LENGTH_SHORT).show()
             if (it.total_count > 0) {
+                setShowNoUserFound(false)
                 binding.githubUserRecycler.adapter = GithubUserAdapter(it.users)
+            } else {
+                setShowNoUserFound(true)
             }
         })
 
         viewModel.errorLiveData.observe(this, Observer {
             Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show()
         })
+    }
+
+    private fun setShowNoUserFound(show: Boolean) {
+        if (show) {
+            binding.NoUserFoundIcon.visibility = View.VISIBLE
+            binding.NoUserFoundText.visibility = View.VISIBLE
+            binding.githubUserRecycler.visibility = View.GONE
+        } else {
+            binding.NoUserFoundIcon.visibility = View.GONE
+            binding.NoUserFoundText.visibility = View.GONE
+            binding.githubUserRecycler.visibility = View.VISIBLE
+        }
+    }
+
+    private fun submitSearch() {
+        binding.submitButton.setOnClickListener {
+            if (binding.searchEditText.text.toString() != ""){
+                viewModel.searchUserInGithub(binding.searchEditText.text.toString())
+            }
+        }
     }
 }
