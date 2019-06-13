@@ -14,7 +14,9 @@ import dagger.multibindings.IntoMap
 /**
  * Created by Pear on 6/12/2019.
  */
-@Module
+@Module(includes = [
+    ViewModelModule::class
+])
 abstract class ActivityBinder {
 
     @ContributesAndroidInjector
