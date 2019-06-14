@@ -3,6 +3,7 @@ package com.example.kotlinapp.dagger
 import android.app.Activity
 import com.example.kotlinapp.HomeFragment
 import com.example.kotlinapp.MainActivity
+import com.example.kotlinapp.OtherFragment
 import com.example.kotlinapp.ProfileFragment
 import dagger.Binds
 import dagger.Module
@@ -14,17 +15,10 @@ import dagger.multibindings.IntoMap
 /**
  * Created by Pear on 6/12/2019.
  */
-@Module(includes = [
-    ViewModelModule::class
-])
+@Module
 abstract class ActivityBinder {
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [FragmentModule::class])
     abstract fun mainActivity(): MainActivity
 
-    @ContributesAndroidInjector
-    abstract fun homeFragment(): HomeFragment
-
-    @ContributesAndroidInjector(modules = [MainModule::class])
-    abstract fun profileFragment(): ProfileFragment
 }

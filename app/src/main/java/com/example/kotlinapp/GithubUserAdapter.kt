@@ -12,7 +12,7 @@ import com.example.kotlinapp.databinding.LayoutGithubUserBinding
  */
 class GithubUserAdapter(private val githubUserList: List<User>) : RecyclerView.Adapter<GithubUserAdapter.ViewHolder>() {
     private val color = intArrayOf(R.color.colorAccent)
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): GithubUserAdapter.ViewHolder {
+    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val inflater = LayoutInflater.from(p0.context)
         return ViewHolder(DataBindingUtil.inflate(inflater, R.layout.layout_github_user, p0, false))
     }
@@ -21,7 +21,7 @@ class GithubUserAdapter(private val githubUserList: List<User>) : RecyclerView.A
         return githubUserList.size
     }
 
-    override fun onBindViewHolder(p0: GithubUserAdapter.ViewHolder, p1: Int) {
+    override fun onBindViewHolder(p0: ViewHolder, p1: Int) {
         p0.apply {
             setBackgroundColor()
             setTag(p1)

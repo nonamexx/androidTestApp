@@ -13,31 +13,35 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.kotlinapp.dagger.ViewModelFactory
 import com.example.kotlinapp.databinding.FragmentOtherBinding
 import dagger.android.support.DaggerFragment
+import javax.inject.Inject
 
 /**
  * Created by Pear on 4/2/2019.
  */
-class OtherFragment: Fragment() {
+class OtherFragment: DaggerFragment() {
     private lateinit var binding: FragmentOtherBinding
     private lateinit var viewModel: GithubUserViewModel
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
     companion object {
         fun newInstance(): OtherFragment = OtherFragment()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(GithubUserViewModel::class.java)
+        viewModel = ViewModelProviders.of(this, viewModelFactory)[GithubUserViewModel::class.java]
         observeViewModel()
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_other, container, false)
-//        viewModel.searchUserInGithub("no")
         submitSearch()
         binding.githubUserRecycler.layoutManager = LinearLayoutManager(context)
-//        binding.githubUserRecycler.adapter = GithubUserAdapter()
         return binding.root
     }
 

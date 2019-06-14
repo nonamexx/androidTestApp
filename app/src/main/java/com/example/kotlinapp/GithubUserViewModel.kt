@@ -1,28 +1,23 @@
 package com.example.kotlinapp
 
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.kotlinapp.Service.Service
-import io.reactivex.Observable
-import io.reactivex.Observer
-import io.reactivex.Scheduler
+import com.example.kotlinapp.service.Service
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
+import javax.inject.Inject
 
 /**
  * Created by Pear on 6/13/2019.
  */
-class GithubUserViewModel: ViewModel() {
-    private val compositeDisposable = CompositeDisposable()
+class GithubUserViewModel @Inject constructor() : ViewModel(){
 
+    private val compositeDisposable = CompositeDisposable()
     val userDataLiveData = MutableLiveData<UserResponse>()
     val errorLiveData = MutableLiveData<Boolean>()
 
