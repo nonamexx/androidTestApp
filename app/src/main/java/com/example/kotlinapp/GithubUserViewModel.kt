@@ -2,7 +2,7 @@ package com.example.kotlinapp
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.kotlinapp.service.Service
+import com.example.kotlinapp.service.AllService
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.subscribeBy
@@ -41,17 +41,20 @@ class GithubUserViewModel @Inject constructor() : ViewModel(){
 //
 //    }
 
-    private var retrofit: Retrofit = Retrofit.Builder()
-        .baseUrl("https://api.github.com/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        .build()
+//    private var retrofit: Retrofit = Retrofit.Builder()
+//        .baseUrl("https://api.github.com/")
+//        .addConverterFactory(GsonConverterFactory.create())
+//        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//        .build()
+//
+//    var service: AllService = retrofit.create(AllService::class.java)
 
-    var service: Service = retrofit.create(Service::class.java)
+    @Inject
+    lateinit var githubService: AllService
 
     fun searchUserInGithub(user: String?) {
 
-        service.searchUser(user)
+        githubService.searchUser(user)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy ({

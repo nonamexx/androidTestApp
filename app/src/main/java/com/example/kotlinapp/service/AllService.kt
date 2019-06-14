@@ -9,7 +9,7 @@ import retrofit2.http.Query
 /**
  * Created by Pear on 6/13/2019.
  */
-interface Service {
+interface AllService {
     @GET("search/users")
     fun searchUser(@Query("q") q: String?): Single<Response<UserResponse>>
 }

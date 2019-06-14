@@ -34,6 +34,7 @@ class OtherFragment: DaggerFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // viewModel will not lose
         viewModel = ViewModelProviders.of(this, viewModelFactory)[GithubUserViewModel::class.java]
         observeViewModel()
     }
