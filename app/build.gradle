@@ -116,17 +116,14 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
 }
 
-afterEvaluate {
-//    assembleAndroidTest
-//    compileDebugUnitTestSources
-//    testDebugUnitTest // run Unit tests
-//    testReleaseUnitTest
-    assembleDebug.dependsOn{
-        test
-    }
-    println("This is a test result ----> ${getTestReportDir().path}")
-
-}
+// Run Test
+//afterEvaluate {
+//    assembleDebug.dependsOn{
+//        test
+//    }
+//    println("This is a test result ----> ${getTestReportDir().path}")
+//
+//}
 
 task printMe {
     doLast {
